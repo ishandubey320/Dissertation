@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earthquake Location Simulator</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="index.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body style="background-color: #f0f0f0;"> <!-- Updated background color for the body -->
+    <div class="container mt-5 bg-white p-4"> <!-- Added Bootstrap classes for background color and padding -->
+        <div id="Input-container">
+
+                <h2>Station Input</h2>
+                <div class="mb-3">
+                    <input type="number" class="form-control" id="stationCount" min="1" placeholder="Enter number of stations">
+                </div>
+                <button class="btn btn-primary" onclick="generateValues()">Generate Values</button>
+
+
+            <table id="outputTable">
+                <!-- Values will be dynamically populated here -->
+            </table>
+
+            <div id="slide-container" class="mt-3" style="display: none;">
+                <h3 class="mb-3">Velocity :</h3>
+                <div class="slidecontainer">
+                    <input type="range" min="1" max="50" value="0.1" class="slider" id="myRange">
+                    <p>Value: <span id="demo">0.1</span></p>
+                </div>
+            </div>
+
+            <div id="actual-earthquake" class="mt-3" style="display: none;">
+                <h3>Estimated Earthquake Location</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="xInput" class="form-label">X Coordinate:</label>
+                        <input type="number" class="form-control" id="xInput" placeholder="Enter X coordinate">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="yInput" class="form-label">Y Coordinate:</label>
+                        <input type="number" class="form-control" id="yInput" placeholder="Enter Y coordinate">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="zInput" class="form-label">Z Coordinate:</label>
+                        <input type="number" class="form-control" id="zInput" placeholder="Enter Z coordinate">
+                    </div>
+                </div>
+            </div>
+
+            <button id="submitBtn" class="btn btn-primary mt-3" onclick="submitValues()" style="display: none;">Submit</button>
+        </div>
+
+
+
+        <div id="graphs" style="display: none;">
+            <div class="column">
+                <div class="col-md-4">
+                    <div class="graph-container">
+                        <h3>Graph 1</h3>
+                        <div id="u"></div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="graph-container">
+                        <h3>Graph 2</h3>
+                        <div id="grid-search-results"></div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="graph-container">
+                        <h3>Graph 3</h3>
+                        <div id="plot-svg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
